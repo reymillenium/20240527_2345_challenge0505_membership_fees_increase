@@ -6,7 +6,7 @@
 
 ### Exercise Description:
 
-Running on a particular treadmill you burn 3.6 calories per minute. Write a program that uses a loop to display the number of calories burned after 5, 10, 15, 20, 25, and 30 minutes.
+A country club, which currently charges $2,500 per year for membership, has announced it will increase its membership fee by 4 percent each year for the next 6 years. Write a program that uses a loop to display the projected rates for the next 6 years.
 
 ## Execution from the Terminal (Alternative way without an IDE):
 
@@ -34,6 +34,7 @@ And in order to run that a.out file, we must execute on the terminal:
 
 ```terminal
 reinier@reinier % ./your_prefered_executable_file_name
+
 * * * * * * * * * * * * *
 *    Membership Fees    *
 * * * * * * * * * * * * *

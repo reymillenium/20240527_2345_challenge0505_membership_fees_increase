@@ -12,20 +12,18 @@
  **/
 
 #include <iostream>
-#include <cmath> // for sqrt, sin, pow
-#include <iomanip> // for setprecision
-#include <ctime>   // For the time function
-#include <sstream> // for stringstream
-
-using namespace std;
+#include <cmath>
+#include <iomanip>
+#include <ctime>
+#include <sstream>
 
 template<typename T>
 void printl(const T &item) {
     std::cout << item << std::endl;
 }
 
-string humanize_integer(int const integer_value) {
-    string integer_as_string = to_string(integer_value);
+std::string humanize_integer(int const integer_value) {
+    std::string integer_as_string = std::to_string(integer_value);
     // We insert commas into the string every three digits, fromm right to left.
     for (int j = integer_as_string.length() - 3; j > 0; j -= 3) {
         integer_as_string.insert(j, ",");
@@ -33,7 +31,7 @@ string humanize_integer(int const integer_value) {
     return integer_as_string;
 }
 
-string humanize_double(const double double_value, const int precision = 2) {
+std::string humanize_double(const double double_value, const int precision = 2) {
     const int integer_value = static_cast<int>(double_value);
     const double decimals = double_value - integer_value;
     // Extracts into a string the decimal part, rounded to two significant digits
@@ -45,15 +43,16 @@ string humanize_double(const double double_value, const int precision = 2) {
     return humanize_integer(integer_value) + decimals_as_string.substr(1, precision + 1);
 }
 
-string monetize_double(const double double_value, const int precision = 2) {
+std::string monetize_double(const double double_value, const int precision = 2) {
     return "$ " + humanize_double(double_value, precision);
 }
 
 int main() {
-    const time_t now = time(nullptr); // gets current dat/time with respect to system
+    const time_t now = time(nullptr); // gets current time with respect to system
     const tm *local_time = localtime(&now);
     const int CURRENT_YEAR = 1900 + local_time->tm_year;
 
+    printl("");
     printl("* * * * * * * * * * * * *");
     printl("*    Membership Fees    *");
     printl("* * * * * * * * * * * * *");
@@ -67,7 +66,7 @@ int main() {
 
         const double membership_fees = INITIAL_MEMBERSHIP_CHARGE * pow(YEARLY_INCREASE_RATE, i);
 
-        cout << fixed << setprecision(2) << "| " << setw(4) << year << " | " << setw(10) << monetize_double(membership_fees) << " |" << endl;
+        std::cout << std::fixed << std::setprecision(2) << "| " << std::setw(4) << year << " | " << std::setw(10) << monetize_double(membership_fees) << " |" << std::endl;
         printl("---------------------");
     }
 
